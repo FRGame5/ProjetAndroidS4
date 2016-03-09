@@ -22,6 +22,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".Ajout_ModifContact"
+            android:label="@string/title_activity_ajout__modif_contact" >
+        </activity>
     </application>
 
 </manifest>

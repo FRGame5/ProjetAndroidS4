@@ -3,5 +3,9 @@
 
     <string name="app_name">ContactGestion</string>
     <string name="hello_world">Hello world!</string>
+    <string name="title_activity_ajout__modif_contact">Ajout_ModifContact</string>
+    <string name="surnom">Surnom</string>
+    <string name="sexe">Sexe</string>
+    <string name="telephone">Téléphone</string>
 
 </resources>
