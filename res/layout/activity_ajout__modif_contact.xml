@@ -22,7 +22,7 @@
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <EditText
-            android:id="@+id/editText1"
+            android:id="@+id/textSurnom"
             android:layout_width="224dp"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -45,17 +45,17 @@
             android:orientation="horizontal" >
 
             <RadioButton
-                android:id="@+id/radio0"
+                android:id="@+id/radioFemme"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:checked="true"
-                android:text="RadioButton" />
+                android:text="@string/radioF" />
 
             <RadioButton
-                android:id="@+id/radio2"
+                android:id="@+id/radioHomme"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="RadioButton" />
+                android:text="@string/radioH" />
         </RadioGroup>
 
         <TextView
@@ -66,7 +66,7 @@
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <EditText
-            android:id="@+id/editText2"
+            android:id="@+id/textTelephone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -80,20 +80,21 @@
         android:layout_gravity="bottom" >
 
         <Button
-            android:id="@+id/button1"
+            android:id="@+id/bt_annuler_ajout_contact"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
-            android:text="Button" />
+            android:text="@string/annuler" />
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/bt_ajouter_contact"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_alignParentTop="true"
-            android:text="Button" />
+            android:onClick="insertContact"
+            android:text="@string/ok" />
 
     </RelativeLayout>
 

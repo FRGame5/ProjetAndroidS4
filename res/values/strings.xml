@@ -6,6 +6,11 @@
     <string name="title_activity_ajout__modif_contact">Ajout_ModifContact</string>
     <string name="surnom">Surnom</string>
     <string name="sexe">Sexe</string>
+    <string name="radioH">Homme</string>
+    <string name="radioF">Femme</string>
     <string name="telephone">Téléphone</string>
+    <string name="annuler">Annuler</string>
+    <string name="ok">OK</string>
+    <string name="ajouter_contact">Ajouter</string>
 
 </resources>
