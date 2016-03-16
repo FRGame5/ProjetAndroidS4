@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    
+    <string name="CREATE_CONTACTS">CREATE TABLE Contacts (id INTEGER PRIMARY KEY AUTOINCREMENT, surnom TEXT, sexe TEXT, telephone TEXT)</string>
+    <string name="DELETE_CONTACTS">DROP TABLE IF EXISTS Contacts</string>
+    <string name="QUERY_CONTACTS">Select surnom, telephone from Contacts order by id asc</string>
+    
+</resources>

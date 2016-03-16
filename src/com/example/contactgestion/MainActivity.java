@@ -1,27 +1,57 @@
 package com.example.contactgestion;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import android.app.Activity;
+import android.content.ContentValues;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.util.MonthDisplayHelper;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.Toast;
 
 public class MainActivity extends Activity {
 	
-	private List<String> liste;
-	private ArrayAdapter<String> adapter;
+	private ArrayList<String> surnoms;
+	private ArrayList<String> telephones;
+	private ContactAdapter adapteur;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		this.updateListView();
+		this.surnoms = new ArrayList<String>();
+		this.telephones = new ArrayList<String>();
+		
+		// initialisation de la listView
+		ListView lView = (ListView)findViewById(R.id.listView1);
+				
+		// remplissage des tableaux contenant les surnoms et les numéros de téléphone
+		this.updateDataSource();
+//		this.surnoms.add("Loic");
+//		this.telephones.add("0629490277");
+		
+		// initialisation de l'adapteur
+		adapteur = new ContactAdapter(this, this.surnoms, this.telephones);
+		
+		lView.setAdapter(adapteur);
 	}
 	
+	@Override
+	protected void onResume() {
+		super.onResume();
+		this.updateDataSource();
+		this.adapteur.notifyDataSetChanged();
+	}
 	
 	/**
 	 * lance l'activité permettant d'ajouter un contact
@@ -40,9 +70,23 @@ public class MainActivity extends Activity {
 		}
 	}
 	
-	public void updateListView()
-	{
-		ListView lView = (ListView)findViewById(R.id.listView1);
+	private void updateDataSource() {
+		
+		// connexion à la base de données
+		DBQuery db = new DBQuery(this);
+		
+		SQLiteDatabase bdd = db.getReadableDatabase();
+		Cursor curs = bdd.rawQuery(getResources().getString(R.string.QUERY_CONTACTS), null);
+		
+		// parcours des résultats de la requête et remplissage des listes
+		if (curs.moveToFirst()) {
+			do{
+				this.surnoms.add(curs.getString(curs.getColumnIndexOrThrow("surnom")));
+				this.telephones.add(curs.getString(curs.getColumnIndexOrThrow("telephone")));
+			}while(curs.moveToNext());
+		}
+		curs.close();
+		bdd.close();
 	}
 	
 	
