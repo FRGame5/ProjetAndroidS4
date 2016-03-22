@@ -14,13 +14,15 @@ public class ContactAdapter extends BaseAdapter {
 	private Context context;
 	private ArrayList<String> surnoms;
 	private ArrayList<String> telephones;
+	private ArrayList<Long> ids;
 	
 	private static LayoutInflater inflater = null;
 	
-	public ContactAdapter(Context context, ArrayList<String> surnoms, ArrayList<String> telephones) {
+	public ContactAdapter(Context context, ArrayList<String> surnoms, ArrayList<String> telephones, ArrayList<Long> ids) {
 		this.context = context;
 		this.surnoms = surnoms;
 		this.telephones = telephones;
+		this.ids = ids;
 		
 		inflater = (LayoutInflater) this.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 	}
@@ -35,9 +37,13 @@ public class ContactAdapter extends BaseAdapter {
 		return this.surnoms.get(position);
 	}
 
+	/* (non-Javadoc)
+	 * @see android.widget.Adapter#getItemId(int)
+	 * retourne l'identifiant de la personne dans la BD
+	 */
 	@Override
 	public long getItemId(int position) {
-		return position;
+		return this.ids.get(position);
 	}
 
 	@Override

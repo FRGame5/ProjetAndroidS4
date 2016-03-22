@@ -5,6 +5,7 @@ import android.content.ContentValues;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -16,6 +17,13 @@ public class Ajout_ModifContact extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_ajout__modif_contact);
+		
+		Button b = (Button) findViewById(R.id.bt_ajouter_contact);
+		
+		// selon si c'est un ajout ou une modification
+		if (getIntent().getStringExtra("methode").equals("modifier")) {
+			b.setText("Modifier");
+		}
 	}
 	
 	public void insertContact(View v)
